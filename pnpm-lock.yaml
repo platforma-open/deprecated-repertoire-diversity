@@ -98,22 +98,6 @@ importers:
         specifier: 'catalog:'
         version: 5.4.3(@types/node@22.0.0)
 
-  test:
-    dependencies:
-      this-block:
-        specifier: workspace:@platforma-open/milaboratories.repertoire-diversity@*
-        version: link:..
-    devDependencies:
-      '@platforma-sdk/test':
-        specifier: 'catalog:'
-        version: 1.5.43(@types/node@22.0.0)
-      typescript:
-        specifier: 'catalog:'
-        version: 5.5.4
-      vitest:
-        specifier: 'catalog:'
-        version: 2.1.1(@types/node@22.0.0)
-
   ui:
     dependencies:
       '@platforma-open/milaboratories.repertoire-diversity.model':
