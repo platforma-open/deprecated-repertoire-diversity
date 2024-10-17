@@ -9,13 +9,20 @@ const app = useApp();
 if (app.ui === undefined) {
   app.model.ui = {
     weight: 'auto',
+    tableState: {
+      gridState: {},
+      pTableParams: {
+        sorting: [],
+        filters: []
+      }
+    },
     downsampling: {
       type: 'auto',
       tag: 'read',
       countNorm: 'auto',
       countNormValue: 1000,
       topValue: 1000,
-      cumtopValue: 50
+      cumtopValue: 80
     }
   }
 };
@@ -43,7 +50,6 @@ const tableSettings = computed<PlDataTableSettings>(() => ({
   ],
 } satisfies PlDataTableSettings));
 
-// const splitBy = 
 const settingsAreShown = ref(app.model.outputs.pt === undefined)
 const showSettings = () => { settingsAreShown.value = true }
 
