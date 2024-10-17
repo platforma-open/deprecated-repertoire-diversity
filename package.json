@@ -1,0 +1,58 @@
+{
+  "name": "@platforma-open/milaboratories.repertoire-diversity",
+  "version": "1.0.0",
+  "scripts": {
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",
+    "build": "rm -rf ./block-pack && block-tools pack"
+  },
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
+  "dependencies": {
+    "@platforma-open/milaboratories.repertoire-diversity.workflow": "workspace:*",
+    "@platforma-open/milaboratories.repertoire-diversity.model": "workspace:*",
+    "@platforma-open/milaboratories.repertoire-diversity.ui": "workspace:*"
+  },
+  "block": {
+    "components": {
+      "workflow": "@platforma-open/milaboratories.repertoire-diversity.workflow/dist/tengo/tpl/main.plj.gz",
+      "model": "@platforma-open/milaboratories.repertoire-diversity.model/dist/model.json",
+      "ui": "@platforma-open/milaboratories.repertoire-diversity.ui/dist"
+    },
+    "meta": {
+      "title": "Repertoire Diversity Analysis",
+      "logo": "file:logos/block-logo.png",
+      "url": "https://github.com/platforma-open/repertoire-diversity",
+      "docs": "https://github.com/platforma-open/repertoire-diversity",
+      "support": "mailto:support@milaboratories.com",
+      "description": "Analysis of VDJ repertoire diversity.",
+      "longDescription": "file:./docs/description.md",
+      "changelog": "file:CHANGELOG.md",
+      "tags": [
+        "vdj",
+        "downstream"
+      ],
+      "organization": {
+        "name": "MiLaboratories Inc",
+        "url": "https://milaboratories.com/",
+        "logo": "file:logos/milaboratories.png"
+      }
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "catalog:",
+    "@platforma-sdk/block-tools": "catalog:"
+  },
+  "//": {
+    "pnpm": {
+      "overrides": {
+        "@milaboratories/pl-model-common": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/lib/model/common/package.tgz",
+        "@platforma-sdk/model": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/sdk/model/package.tgz",
+        "@platforma-sdk/ui-vue": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/sdk/ui-vue/package.tgz",
+        "@platforma-sdk/workflow-tengo": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/sdk/workflow-tengo/package.tgz",
+        "@milaboratories/uikit": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/lib/ui/uikit/package.tgz"
+      }
+    }
+  }
+}

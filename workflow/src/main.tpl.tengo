@@ -1,0 +1,37 @@
+// repertoire diversity analysis
+ll := import("@platforma-sdk/workflow-tengo:ll")
+wf := import("@platforma-sdk/workflow-tengo:workflow")
+exec := import("@platforma-sdk/workflow-tengo:exec")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+render := import("@platforma-sdk/workflow-tengo:render")
+pframes := import("@platforma-sdk/workflow-tengo:pframes")
+json := import("json")
+
+mixcrTpl := assets.importTemplate(":mixcr")
+importTsvTpl := assets.importTemplate(":importTsv")
+
+wf.prepare(func(args){
+	return {
+		clns: wf.resolve(args.clnsRef)
+	}
+})
+
+wf.body(func(args) {
+	mixcr := render.create(mixcrTpl, args)
+
+	importTsv := render.create(importTsvTpl, {
+		tsv: mixcr.output("tsv"),
+		sampleIdAxisSpec: args.clns.spec.axesSpec[0]
+	})
+
+	pf := importTsv.output("pf")
+	return {
+		outputs: {
+			pf: pframes.exportFrame(pf)
+		},
+
+		exports: {
+			pf: pf
+		}
+	}
+})

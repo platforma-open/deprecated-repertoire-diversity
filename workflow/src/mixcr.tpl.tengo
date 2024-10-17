@@ -1,0 +1,42 @@
+// mixcr postanalysis individual # diversity
+
+self := import("@platforma-sdk/workflow-tengo:tpl")
+exec := import("@platforma-sdk/workflow-tengo:exec")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+json := import("json")
+
+mixcrSw := assets.importSoftware("@milaboratory/mixcr:main")
+
+self.defineOutputs("tsv")
+
+self.body(func(args) {
+	clns := args.clns.data
+
+	filesMap := {}
+	for k, v in clns.inputs() {
+		filesMap[json.decode(k)[0]] = v
+	}
+
+	cmdBuilder := exec.builder().
+		software(mixcrSw).
+		arg("postanalysis").
+		arg("individual").
+		arg("--default-downsampling").arg("none").
+		arg("--default-weight-function").arg("none")
+
+	for name, f in filesMap {
+		cmdBuilder = cmdBuilder.arg(name + ".clns")
+	}
+	cmdBuilder = cmdBuilder.arg("r.json")
+
+	for name, f in filesMap {
+		cmdBuilder = cmdBuilder.addFile(name + ".clns", f)
+	}
+
+	cmdBuilder = cmdBuilder.saveFileSet("diversityTsv", "^r\\.diversity\\..*\\.tsv$")
+	run := cmdBuilder.run()
+
+	return {
+		tsv: run.getFileSet("diversityTsv")
+	}
+})
