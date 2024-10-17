@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",
-    "build": "rm -rf ./block-pack && block-tools pack"
+    "build": "rm -rf ./block-pack && block-tools pack",
+    "prepublishOnly": "block-tools pack && block-tools publish -r 's3://milab-euce1-prod-pkgs-s3-block-registry/pub/releases/?region=eu-central-1'"
   },
   "files": [
     "index.d.ts",
@@ -53,12 +54,6 @@
         "@platforma-sdk/workflow-tengo": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/sdk/workflow-tengo/package.tgz",
         "@milaboratories/uikit": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/lib/ui/uikit/package.tgz"
       }
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "@platforma-sdk/model": "file:/Users/gramkin/Work/platforma/sdk/model/package.tgz",
-      "@platforma-sdk/ui-vue": "file:/Users/gramkin/Work/platforma/sdk/ui-vue/package.tgz"
     }
   }
 }
