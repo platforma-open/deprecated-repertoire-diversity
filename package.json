@@ -54,5 +54,11 @@
         "@milaboratories/uikit": "file:/Users/poslavskysv/Projects/milab/platforma/platforma-sdk/lib/ui/uikit/package.tgz"
       }
     }
+  },
+  "pnpm": {
+    "overrides": {
+      "@platforma-sdk/model": "file:/Users/gramkin/Work/platforma/sdk/model/package.tgz",
+      "@platforma-sdk/ui-vue": "file:/Users/gramkin/Work/platforma/sdk/ui-vue/package.tgz"
+    }
   }
 }

@@ -51,6 +51,7 @@ const parseTags = (str: string) => {
   if (str === '') return [];
   return str.split(',');
 }
+
 const cellTags = computed(() => parseTags(app.model.outputs.datasetSpec?.annotations?.['mixcr.com/cellTags'] ?? ''))
 const umiTags = computed(() => parseTags(app.model.outputs.datasetSpec?.annotations?.['mixcr.com/umiTags'] ?? ''))
 
@@ -130,7 +131,6 @@ const countNormOptions = [
   }
 ].map((o) => ({ text: o.label, value: o.value }));
 
-
 const defaultWt = computed<'read' | 'umi' | 'cell'>(() => {
   if (hasCellTags.value) {
     return 'cell';
@@ -141,10 +141,8 @@ const defaultWt = computed<'read' | 'umi' | 'cell'>(() => {
   }
 })
 
+// without the "deep" option, the watch is triggered only when a new "downsampling" object appears (oldDownsampling !== newDownsampling)
 watch(() => app.model.ui.downsampling, (downsampling) => {
-
-  console.log("form changed", app.model.args.downsampling);
-
   switch (downsampling.type) {
     case 'auto':
       app.model.args.downsampling = 'count-' + defaultWt.value + '-auto';
@@ -170,8 +168,7 @@ watch(() => app.model.ui.downsampling, (downsampling) => {
       app.model.args.downsampling = 'none';
       break;
   }
-  console.log("after switch", JSON.stringify(app.model.args));
-}, { immediate: true });
+}, { deep: true });
 
 watch(() => app.model.ui.weight, (weight) => {
   if (weight === 'auto') {
@@ -179,8 +176,7 @@ watch(() => app.model.ui.weight, (weight) => {
   } else {
     app.model.args.weight = weight;
   }
-}, { immediate: true })
-
+}, { deep: true });
 </script>
 
 <template>
@@ -243,7 +239,6 @@ watch(() => app.model.ui.weight, (weight) => {
       </template>
     </PlSlideModal>
 
-    <PlAgDataTable :settings="tableSettings" v-model="app.model.ui.tableState" />
-
+    <PlAgDataTable v-if="app.model.ui" :settings="tableSettings" v-model="app.model.ui.tableState" />
   </PlBlockPage>
 </template>
