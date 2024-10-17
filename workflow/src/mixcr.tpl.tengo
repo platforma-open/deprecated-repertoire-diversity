@@ -3,6 +3,7 @@
 self := import("@platforma-sdk/workflow-tengo:tpl")
 exec := import("@platforma-sdk/workflow-tengo:exec")
 assets := import("@platforma-sdk/workflow-tengo:assets")
+times := import("times")
 json := import("json")
 
 mixcrSw := assets.importSoftware("@milaboratory/mixcr:main")
@@ -21,8 +22,16 @@ self.body(func(args) {
 		software(mixcrSw).
 		arg("postanalysis").
 		arg("individual").
-		arg("--default-downsampling").arg("none").
-		arg("--default-weight-function").arg("none")
+		arg("--default-downsampling").arg(args.downsampling).
+		arg("--default-weight-function").arg(args.weight)
+	
+	if args.dropOutliers == true {
+		cmdBuilder = cmdBuilder.arg("--drop-outliers")
+	}
+
+	if args.onlyProductive == true {
+		cmdBuilder = cmdBuilder.arg("--only-productive")
+	}
 
 	for name, f in filesMap {
 		cmdBuilder = cmdBuilder.arg(name + ".clns")
@@ -34,6 +43,9 @@ self.body(func(args) {
 	}
 
 	cmdBuilder = cmdBuilder.saveFileSet("diversityTsv", "^r\\.diversity\\..*\\.tsv$")
+
+	cmdBuilder = cmdBuilder.cache(48 * times.hour);
+	
 	run := cmdBuilder.run()
 
 	return {

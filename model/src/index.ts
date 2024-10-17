@@ -32,7 +32,7 @@ export type BlockArgs = {
   onlyProductive: boolean;
   dropOutliers: boolean;
   downsampling?: string;
-  weightFunction?: 'read' | 'umi' | 'cell' | 'none';
+  weight?: WeightFunction;
 };
 
 export const model = BlockModel.create<BlockArgs, UiState>()
@@ -41,7 +41,7 @@ export const model = BlockModel.create<BlockArgs, UiState>()
     dropOutliers: false
   })
 
-  .argsValid((ctx) => ctx.args.downsampling !== undefined && ctx.args.weightFunction !== undefined)
+  .argsValid((ctx) => ctx.args.downsampling !== undefined && ctx.args.weight !== undefined)
 
   .output('clnsOptions', (ctx) =>
     ctx.resultPool.getOptions((spec) => isPColumnSpec(spec) && spec.name === 'mixcr.com/clns')

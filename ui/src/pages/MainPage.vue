@@ -175,9 +175,9 @@ watch(() => app.model.ui.downsampling, (downsampling) => {
 
 watch(() => app.model.ui.weight, (weight) => {
   if (weight === 'auto') {
-    app.model.args.weightFunction = defaultWt.value;
+    app.model.args.weight = defaultWt.value;
   } else {
-    app.model.args.weightFunction = weight;
+    app.model.args.weight = weight;
   }
 }, { immediate: true })
 
