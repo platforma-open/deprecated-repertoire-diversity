@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { GraphMaker } from "@milaboratories/graph-maker";
-import { GraphMakerSettings } from "@milaboratories/graph-maker/dist/GraphMaker/types";
-import "@milaboratories/graph-maker/dist/style.css";
-import { model } from "@platforma-open/milaboratories.repertoire-diversity.model";
+import { GraphMaker, GraphMakerSettings } from "@milaboratories/graph-maker";
+import '@milaboratories/graph-maker/dist/style.css';
 import { ref } from "vue";
 import { useApp } from "../app";
 
@@ -16,6 +14,5 @@ const settings = ref({
 </script>
 
 <template>
-    <GraphMaker v-if="app.model.outputs.pf" :p-frame-handle="app.model.outputs.pf" :p-frame-driver="model.pFrameDriver"
-        :model-value="settings" />
+    <GraphMaker :pFrame="app.model.outputs.pf" :modelValue="settings" />
 </template>

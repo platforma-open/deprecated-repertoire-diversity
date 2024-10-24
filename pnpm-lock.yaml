@@ -10,8 +10,8 @@ catalogs:
       specifier: ^2.27.7
       version: 2.27.8
     '@milaboratories/graph-maker':
-      specifier: 1.0.12
-      version: 1.0.12
+      specifier: 1.0.14
+      version: 1.0.14
     '@milaboratories/software-pframes-conv':
       specifier: ^1.5.10
       version: 1.5.10
@@ -105,7 +105,7 @@ importers:
     dependencies:
       '@milaboratories/graph-maker':
         specifier: 'catalog:'
-        version: 1.0.12(typescript@5.5.4)
+        version: 1.0.14(typescript@5.5.4)
       '@platforma-open/milaboratories.repertoire-diversity.model':
         specifier: workspace:*
         version: link:../model
@@ -766,17 +766,17 @@ packages:
   '@milaboratories/computable@2.1.12':
     resolution: {integrity: sha512-1Psgs+UymQzGWUtD3Vd0ClaJR86MNrG2WzfxVB6cfrs+Hn8lAFPts5kMA5pkKykP70FM91OJw70GJSHMoH807A==}
 
-  '@milaboratories/graph-maker@1.0.12':
-    resolution: {integrity: sha512-E4Ah0WHSUTdC6oXOycN69CylEoSizsMci1FOuxnmS/zIbxkJsXD4GtREvY3womW66tPH8u3kw6pP/yqjmZD1/w==}
+  '@milaboratories/graph-maker@1.0.14':
+    resolution: {integrity: sha512-oVWAS/XkUHDwMYW8jVUchEstTdANwJdTeblcTvxmPpI0Vxh7nQlAnJVN/AuRl1RI6fcdN6yYYj0RVcH/tcPjnA==}
 
   '@milaboratories/helpers@1.6.5':
     resolution: {integrity: sha512-ACRCu+cIjdZuYBoCSHCkpFMD7RywS54p3rVvNGqx3QmPVeTzadkkXufoCknSnOCwgDLBp+c/sv6kdIJOIG8uZQ==}
 
-  '@milaboratories/miplots4@1.0.44':
-    resolution: {integrity: sha512-l7O1Bg8PNee/leImZr/IkUN43Eyefz7xUSjun9VEm82wq4Sm3KRwPtkqChBBDFrSaJARsvtPBgY6Pv3PM2od0Q==}
+  '@milaboratories/miplots4@1.0.45':
+    resolution: {integrity: sha512-R2Q6ERU3o+LPshXnj81ZzHxkkWNZEWrUxBTLfxBPxcCxxmrxf4OYv+2qDnKeOnthkSf+56x9yoNF2u39NvKXkg==}
 
-  '@milaboratories/pf-plots@1.0.45':
-    resolution: {integrity: sha512-EpYMVQ4FOIkhhaEfXT3P1oUqw3ZYzNfQdres4jWoHtZB6cnKjyr5vGvvjujKuhB1wwiCoQb4F0+EolapEc4MQA==}
+  '@milaboratories/pf-plots@1.0.48':
+    resolution: {integrity: sha512-2gfwAWwwB3isoEB3XE8HB0WM4VzH+T2qwRzpv+G4izdEJ3W6eu1kAIkwMCuPYYGNKZO1OnAvS2iEU39MPfHbJw==}
 
   '@milaboratories/pframes-node@1.5.10':
     resolution: {integrity: sha512-H/OUDfEKrmjg7qn0apbWCJQJsp3Jdmlho/bGYGRNeg8W570C6TexufdCvWqoPIg71BcBiKP2gQcof78OutliEQ==}
@@ -800,6 +800,9 @@ packages:
 
   '@milaboratories/pl-model-common@1.4.0':
     resolution: {integrity: sha512-qPWt61NUBDOqVpL37SIclk63t1/PlOJEvqjPrTLhOZzCU8vPR5crwDH/kq3DteX/2NFDIi4Xx3k2CyMVliTYyA==}
+
+  '@milaboratories/pl-model-common@1.5.0':
+    resolution: {integrity: sha512-cJaU3KNz+7SXEsiVB20E5qb57+gufslCRARqXhQ3Zy7x5APtCqA1ijqRYh70yZUJPrLz5Dc8Y5BLNRhnT5q3rw==}
 
   '@milaboratories/pl-model-middle-layer@1.4.4':
     resolution: {integrity: sha512-2bT904a+LXvLqgwujiLfjVgqaht720EsAGMamFyo03BXWimMjqaE7ytuaGgc4MM4ojnOVvKlmn3gFlAxRoipmg==}
@@ -881,6 +884,9 @@ packages:
 
   '@platforma-sdk/model@1.7.0':
     resolution: {integrity: sha512-cP5gbOi2epyWAAwHn9UzKEQqTLuJkM6TB5bkjvP+Tbam/JqqPOv1MnT8bLN+WxVL/FvP2BnuM1W3QixD67hmWQ==}
+
+  '@platforma-sdk/model@1.7.9':
+    resolution: {integrity: sha512-c7cxgrapB8vLfT6isHmiIwO8yI+zKpvzPsL6DaSnsME2k0pyxKYHtcat2OQsdmhfjubv3mX1S4DpBiJapwncYA==}
 
   '@platforma-sdk/tengo-builder@1.14.13':
     resolution: {integrity: sha512-MuP0nruLsl4QKjD4qHWoh7vShsWE4/BY/BXK/95k1bRq0jzr7hTfirKDukjv/wZThMXMcemACT5YvuqnZRQHGw==}
@@ -5330,11 +5336,11 @@ snapshots:
       '@types/node': 20.16.9
       utility-types: 3.11.0
 
-  '@milaboratories/graph-maker@1.0.12(typescript@5.5.4)':
+  '@milaboratories/graph-maker@1.0.14(typescript@5.5.4)':
     dependencies:
       '@milaboratories/helpers': 1.6.5
-      '@milaboratories/miplots4': 1.0.44
-      '@milaboratories/pf-plots': 1.0.45
+      '@milaboratories/miplots4': 1.0.45
+      '@milaboratories/pf-plots': 1.0.48
       '@milaboratories/uikit': 1.2.22(typescript@5.5.4)
       '@platforma-sdk/model': 1.7.0
       '@types/d3-hierarchy': 3.1.7
@@ -5348,7 +5354,7 @@ snapshots:
 
   '@milaboratories/helpers@1.6.5': {}
 
-  '@milaboratories/miplots4@1.0.44':
+  '@milaboratories/miplots4@1.0.45':
     dependencies:
       '@stdlib/stats-anova1': 0.2.2
       '@stdlib/stats-kruskal-test': 0.2.2
@@ -5370,9 +5376,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@milaboratories/pf-plots@1.0.45':
+  '@milaboratories/pf-plots@1.0.48':
     dependencies:
-      '@platforma-sdk/model': 1.7.0
+      '@platforma-sdk/model': 1.7.9
       canonicalize: 2.0.0
       lodash: 4.17.21
 
@@ -5466,6 +5472,10 @@ snapshots:
       - supports-color
 
   '@milaboratories/pl-model-common@1.4.0':
+    dependencies:
+      zod: 3.23.8
+
+  '@milaboratories/pl-model-common@1.5.0':
     dependencies:
       zod: 3.23.8
 
@@ -5611,6 +5621,12 @@ snapshots:
   '@platforma-sdk/model@1.7.0':
     dependencies:
       '@milaboratories/pl-model-common': 1.4.0
+      utility-types: 3.11.0
+      zod: 3.23.8
+
+  '@platforma-sdk/model@1.7.9':
+    dependencies:
+      '@milaboratories/pl-model-common': 1.5.0
       utility-types: 3.11.0
       zod: 3.23.8
 
