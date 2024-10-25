@@ -26,7 +26,8 @@ tsvImportParams := {
 				name: "pl7.app/vdj/diversityMeasure",
 				type: "String",
 				annotations: {
-					"pl7.app/axisNature": "heterogeneous"
+					"pl7.app/axisNature": "heterogeneous",
+					"pl7.app/label": "Diversity measure"
 				}
 			}
 		}
