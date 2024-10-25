@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { GraphMaker, GraphMakerSettings } from "@milaboratories/graph-maker";
-import '@milaboratories/graph-maker/dist/style.css';
-import { ref } from "vue";
+import { GraphMaker, type GraphMakerSettings} from "@milaboratories/graph-maker";
+import "@milaboratories/graph-maker/styles";
+import { ref } from 'vue';
 import { useApp } from "../app";
 
 const app = useApp();
@@ -14,5 +14,5 @@ const settings = ref({
 </script>
 
 <template>
-    <GraphMaker :pFrame="app.model.outputs.pf" :modelValue="settings" />
+    <GraphMaker :pFrame="app.model.outputs.pf" v-model="settings" />
 </template>
