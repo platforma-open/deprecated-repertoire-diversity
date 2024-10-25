@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { GraphMakerSettings } from '@milaboratories/graph-maker';
 import { PlAgDataTable, PlBlockPage, PlBtnGroup, PlBtnPrimary, PlCheckbox, PlDataTableSettings, PlDropdownRef, PlNumberField, PlSlideModal, PlTooltip } from '@platforma-sdk/ui-vue';
 import { computed, ref, watch } from 'vue';
 import { useApp } from '../app';
@@ -23,7 +24,12 @@ if (app.ui === undefined) {
       countNormValue: 1000,
       topValue: 1000,
       cumtopValue: 80
-    }
+    },
+    graphState: {
+      title: "Diversity Analysis",
+      chartType: "discrete",
+      template: "box"
+    } satisfies GraphMakerSettings
   }
 };
 
