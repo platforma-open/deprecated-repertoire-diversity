@@ -26,7 +26,7 @@ type DownsamplingForm = {
  */
 export type UiState = {
   tableState?: PlDataTableState;
-  graphState?: GraphMakerSettings;
+  graphState: GraphMakerSettings;
   weight: WeightFunction;
   downsampling: DownsamplingForm;
 };
