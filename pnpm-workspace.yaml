@@ -15,12 +15,12 @@ catalog:
   '@milaboratory/mixcr': 4.7.0-108-develop
   '@milaboratories/graph-maker': 1.0.16
   '@milaboratories/software-pframes-conv': ^1.6.4
-  '@platforma-open/milaboratories.software-small-binaries': ^1.13.1
-  
-  
+  '@platforma-open/milaboratories.software-small-binaries': ^1.14.5
+
+
   "vue": ^3.4.34
   "vue-tsc": ^2.0.29
-  
+
   "typescript": ^5.5.4
   "tsup": ~8.1.2
 

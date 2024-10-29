@@ -19,7 +19,7 @@ catalogs:
       specifier: 4.7.0-108-develop
       version: 4.7.0-108-develop
     '@platforma-open/milaboratories.software-small-binaries':
-      specifier: ^1.13.1
+      specifier: ^1.14.5
       version: 1.14.5
     '@platforma-sdk/block-tools':
       specifier: ^2.3.19
