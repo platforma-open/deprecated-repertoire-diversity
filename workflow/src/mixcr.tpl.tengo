@@ -6,7 +6,7 @@ assets := import("@platforma-sdk/workflow-tengo:assets")
 times := import("times")
 json := import("json")
 
-mixcrSw := assets.importSoftware("@milaboratory/mixcr:main")
+mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
 
 self.defineOutputs("tsv")
 

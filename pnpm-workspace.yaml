@@ -12,7 +12,7 @@ catalog:
   '@platforma-sdk/block-tools': ^2.3.19
 
   "@platforma-sdk/test": ^1.5.43
-  '@milaboratory/mixcr': 4.7.0-108-develop
+  '@platforma-open/milaboratories.software-mixcr': 4.7.0-113-develop
   '@milaboratories/graph-maker': 1.0.16
   '@milaboratories/software-pframes-conv': ^1.6.4
   '@platforma-open/milaboratories.software-small-binaries': ^1.14.5

@@ -15,9 +15,9 @@ catalogs:
     '@milaboratories/software-pframes-conv':
       specifier: ^1.6.4
       version: 1.6.4
-    '@milaboratory/mixcr':
-      specifier: 4.7.0-108-develop
-      version: 4.7.0-108-develop
+    '@platforma-open/milaboratories.software-mixcr':
+      specifier: 4.7.0-113-develop
+      version: 4.7.0-113-develop
     '@platforma-open/milaboratories.software-small-binaries':
       specifier: ^1.14.5
       version: 1.14.5
@@ -137,9 +137,9 @@ importers:
       '@milaboratories/software-pframes-conv':
         specifier: 'catalog:'
         version: 1.6.4
-      '@milaboratory/mixcr':
+      '@platforma-open/milaboratories.software-mixcr':
         specifier: 'catalog:'
-        version: 4.7.0-108-develop
+        version: 4.7.0-113-develop
       '@platforma-open/milaboratories.software-small-binaries':
         specifier: 'catalog:'
         version: 1.14.5
@@ -1079,9 +1079,6 @@ packages:
   '@milaboratories/uikit@1.2.28':
     resolution: {integrity: sha512-lfhngPpyp/+2mXfnkDDSvzTakpE1iwEEqG7K5eF28nz7MB+kgwrZunjSFsKo6K17bnITpbxLeSWxkC3PsjnICQ==}
 
-  '@milaboratory/mixcr@4.7.0-108-develop':
-    resolution: {integrity: sha512-JBqSEhYDZ4V5io3VD4L12t6UzbfOjzPObzn8ni3RWKMu2IB4bXfmJECqMb7XsOw1Y5/cPtGxg82ZFgvVf4UbvQ==, tarball: https://npm.pkg.github.com/download/@milaboratory/mixcr/4.7.0-108-develop/fb7618ae24d3498aeebebf70a876d1497728d0dd}
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1105,6 +1102,9 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@platforma-open/milaboratories.software-mixcr@4.7.0-113-develop':
+    resolution: {integrity: sha512-Nt8CyVutiadwiasnXjZAN2qWnkuq6nQQb4/fZCNfSU/FJPpGQdvV0ff3cab0w3ZgM6LTnwiWLqFcfOmLSUW4ig==}
 
   '@platforma-open/milaboratories.software-small-binaries@1.14.5':
     resolution: {integrity: sha512-zfLLCu6Bv7yDcu8pFOUiP4v1dvSCDRjAGlzYuiNJ0IAxgC85+GUWuD0Pu7+NO/MaKQ2hrUPHhgJjzByAI/vM1w==}
@@ -6428,8 +6428,6 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@milaboratory/mixcr@4.7.0-108-develop': {}
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -6486,6 +6484,8 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@platforma-open/milaboratories.software-mixcr@4.7.0-113-develop': {}
 
   '@platforma-open/milaboratories.software-small-binaries@1.14.5': {}
 
