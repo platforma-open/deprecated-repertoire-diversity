@@ -16,5 +16,5 @@ if (app.ui.graphState === undefined) {
 </script>
 
 <template>
-    <GraphMaker :pFrame="app.model.outputs.pf" v-model="app.model.ui.graphState" />
+    <GraphMaker :p-frame="app.model.outputs.pf" v-model="app.model.ui.graphState" />
 </template>
