@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { GraphMakerSettings } from '@milaboratories/graph-maker';
-import { PlAgDataTable, PlBlockPage, PlBtnGroup, PlBtnPrimary, PlCheckbox, PlDataTableSettings, PlDropdownRef, PlNumberField, PlSlideModal, PlTooltip } from '@platforma-sdk/ui-vue';
+import { PlAgDataTable, PlBlockPage, PlBtnGhost, PlBtnGroup, PlCheckbox, PlDataTableSettings, PlDropdownRef, PlMaskIcon24, PlNumberField, PlSlideModal, PlTooltip } from '@platforma-sdk/ui-vue';
 import { computed, ref, watch } from 'vue';
 import { useApp } from '../app';
 
@@ -28,7 +28,27 @@ if (app.ui === undefined) {
     graphState: {
       title: "Diversity Analysis",
       chartType: "discrete",
-      template: "box"
+      template: "box",
+      defaultOptions: [
+        {
+          inputName: "y",
+          selectedSource: {
+            kind: "PColumn",
+            valueType: "Float",
+            name: "pl7.app/vdj/diversity",
+            axesSpec: [
+              {
+                type: "String",
+                name: "pl7.app/sampleId"
+              },
+              {
+                type: "String",
+                name: "pl7.app/vdj/diversityMeasure"
+              }
+            ]
+          }
+        }
+      ]
     } satisfies GraphMakerSettings
   }
 };
@@ -88,7 +108,7 @@ const tagOptions = computed(() => {
       value: "cell"
     })
   }
-  return options.map((o) => ({ text: o.label, value: o.value }));
+  return options;
 });
 
 const weightOptions = computed(() => {
@@ -97,12 +117,13 @@ const weightOptions = computed(() => {
     label: "Auto",
     value: "auto"
   },
-  ...tagOptions.value.map((o) => ({ label: o.text, value: o.value })), // @TODO (:
+  ...tagOptions.value,
   {
     label: "None",
     value: "none"
   }]
-  return options.map((o) => ({ text: o.label, value: o.value }));
+
+  return options;
 });
 
 const downsamplingType = [
@@ -126,7 +147,7 @@ const downsamplingType = [
     label: 'None',
     value: 'none'
   }
-].map((o) => ({ text: o.label, value: o.value }));
+]
 
 const countNormOptions = [
   {
@@ -141,7 +162,7 @@ const countNormOptions = [
     label: 'Fixed',
     value: 'fixed'
   }
-].map((o) => ({ text: o.label, value: o.value }));
+];
 
 const defaultWt = computed<'read' | 'umi' | 'cell'>(() => {
   if (hasCellTags.value) {
@@ -154,7 +175,8 @@ const defaultWt = computed<'read' | 'umi' | 'cell'>(() => {
 })
 
 // without the "deep" option, the watch is triggered only when a new "downsampling" object appears (oldDownsampling !== newDownsampling)
-watch(() => app.model.ui.downsampling, (downsampling) => {
+watch(() => [app.model.ui.downsampling, cellTags, umiTags], (_) => {
+  const downsampling = app.model.ui.downsampling;
   switch (downsampling.type) {
     case 'auto':
       app.model.args.downsampling = 'count-' + defaultWt.value + '-auto';
@@ -180,22 +202,27 @@ watch(() => app.model.ui.downsampling, (downsampling) => {
       app.model.args.downsampling = 'none';
       break;
   }
-}, { deep: true });
+}, { deep: true, immediate: true });
 
-watch(() => app.model.ui.weight, (weight) => {
+watch(() => [app.model.ui.weight, hasCellTags, hasUmiTags], (_) => {
+  const weight = app.model.ui.weight;
   if (weight === 'auto') {
     app.model.args.weight = defaultWt.value;
-  } else {
+  } else if (weight !== undefined) {
     app.model.args.weight = weight;
   }
-}, { deep: true });
+}, { deep: true, immediate: true });
 </script>
 
 <template>
   <PlBlockPage>
     <template #title>Repertoire Diversity Analysis</template>
     <template #append>
-      <PlBtnPrimary :icon="'settings-2'" @click.stop="showSettings">Settings</PlBtnPrimary>
+      <PlBtnGhost @click.stop="showSettings">Settings
+        <template #append>
+          <PlMaskIcon24 name="settings" />
+        </template>
+      </PlBtnGhost>
     </template>
 
     <PlSlideModal v-model="settingsAreShown">

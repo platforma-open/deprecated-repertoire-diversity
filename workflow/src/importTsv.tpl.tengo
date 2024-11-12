@@ -4,6 +4,7 @@ self := import("@platforma-sdk/workflow-tengo:tpl")
 exec := import("@platforma-sdk/workflow-tengo:exec")
 assets := import("@platforma-sdk/workflow-tengo:assets")
 pframes := import("@platforma-sdk/workflow-tengo:pframes")
+pColumn := import("@platforma-sdk/workflow-tengo:pframes.pcolumn")
 xsv := import("@platforma-sdk/workflow-tengo:pframes.xsv")
 json := import("json")
 
@@ -55,7 +56,7 @@ FILE_NAME_SUFFIX_LEN := len(".tsv")
 
 self.body(func(args) {
 
-	tsvMap := pframes.pColumnResourceMapDataBuilder(/* key length*/ 1 )
+	tsvMap := pColumn.resourceMapBuilder(/* key length*/ 1 )
 	for fileName, file in args.tsv {
 		chain := fileName[FILE_NAME_PREFIX_LEN:(len(fileName) - FILE_NAME_SUFFIX_LEN)]
 		tsvMap.add([chain], file)

@@ -10,7 +10,27 @@ if (app.ui.graphState === undefined) {
     app.model.ui.graphState = {
         title: "Diversity Analysis",
         chartType: "discrete",
-        template: "box"
+        template: "box",
+        defaultOptions: [
+            {
+                inputName: "y",
+                selectedSource: {
+                    kind: "PColumn",
+                    valueType: "Float",
+                    name: "pl7.app/vdj/diversity",
+                    axesSpec: [
+                        {
+                            type: "String",
+                            name: "pl7.app/sampleId"
+                        },
+                        {
+                            type: "String",
+                            name: "pl7.app/vdj/diversityMeasure"
+                        }
+                    ]
+                }
+            }
+        ]
     } satisfies GraphMakerSettings
 };
 </script>
