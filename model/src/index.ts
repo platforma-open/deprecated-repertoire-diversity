@@ -33,6 +33,7 @@ export type UiState = {
 
 export type BlockArgs = {
   clnsRef?: Ref;
+  /* downsampling options */
   onlyProductive: boolean;
   dropOutliers: boolean;
   downsampling?: string;
@@ -65,15 +66,6 @@ export const model = BlockModel.create<BlockArgs, UiState>()
     return createPlDataTable(ctx, pCols, ctx.uiState?.tableState);
   })
 
-  .output('diversityColumnId', (ctx) => {
-    const pCols = ctx.outputs?.resolve('pf')?.getPColumns();
-    if (pCols?.length !== 1) {
-      throw Error('expected single diversity column');
-    }
-
-    return pCols[0].id;
-  })
-
   .output('pf', (ctx) => {
     const pCols = ctx.outputs?.resolve('pf')?.getPColumns();
     if (pCols === undefined) {
@@ -91,11 +83,9 @@ export const model = BlockModel.create<BlockArgs, UiState>()
     return ctx.createPFrame([...pCols, ...upstream]);
   })
 
-  .output('message', (ctx) => ctx.outputs?.resolve('message')?.getDataAsJson())
-
   .sections([
-    { type: 'link', href: '/', label: 'Main' },
-    { type: 'link', href: '/graph', label: 'Graph' }
+    { type: 'link', href: '/', label: 'Tabular results' },
+    { type: 'link', href: '/graph', label: 'Diversity plot' }
   ])
 
   .done();

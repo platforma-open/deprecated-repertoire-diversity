@@ -34,8 +34,8 @@ catalogs:
       specifier: ^1.8.5
       version: 1.8.5
     '@platforma-sdk/ui-vue':
-      specifier: ^1.8.2
-      version: 1.8.2
+      specifier: ^1.8.7
+      version: 1.8.7
     '@platforma-sdk/workflow-tengo':
       specifier: ^1.8.1
       version: 1.8.1
@@ -114,7 +114,7 @@ importers:
         version: link:../model
       '@platforma-sdk/ui-vue':
         specifier: 'catalog:'
-        version: 1.8.2(typescript@5.5.4)
+        version: 1.8.7(typescript@5.5.4)
       vue:
         specifier: 'catalog:'
         version: 3.4.38(typescript@5.5.4)
@@ -931,6 +931,9 @@ packages:
   '@milaboratories/uikit@2.0.13':
     resolution: {integrity: sha512-uTTpdJn0pD6Zqj/9UQ8l+M8wFrDVY/M1KEDD66Cn86Ctm165uxoyz713jq/UjD4SCsM8ge+ysgpLdshdMOdr8w==}
 
+  '@milaboratories/uikit@2.1.1':
+    resolution: {integrity: sha512-Rtm/7Cl+3q3VHwjztf3xwcfLuJkcN3g3AyIDASbfQ1mnXtCFkYNx6t56c16yEo2ZOFl6FPrkYvWtS1nhzfavgQ==}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -973,6 +976,9 @@ packages:
 
   '@platforma-sdk/ui-vue@1.8.2':
     resolution: {integrity: sha512-Em/60qM2MpY3nWfZ690Js9GVFmRhnMpEt78C/fV2skkPViyZtFmzuO+dOuddYNFr4+W9i1jRJVO9VS8sM5ineg==}
+
+  '@platforma-sdk/ui-vue@1.8.7':
+    resolution: {integrity: sha512-HNxfG51mLKs1Otf3Um1qUrf+h2XmNpoISFwCT8GiW4OSqoQEabbhyONlDHUYSqQqVm0TLak2JFQVIyseT4jXQw==}
 
   '@platforma-sdk/workflow-tengo@1.8.1':
     resolution: {integrity: sha512-Nbf/ybdn6Rif5RbK4X5R8yOqiPp5u9ACxLZc2SbKrHoZjwQJqJwt+8Nudt9e6tOBjn5tbL21Q5XeRkZmEatIQw==}
@@ -5971,6 +5977,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@milaboratories/uikit@2.1.1(typescript@5.5.4)':
+    dependencies:
+      vue: 3.5.12(typescript@5.5.4)
+    transitivePeerDependencies:
+      - typescript
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -6087,6 +6099,30 @@ snapshots:
       '@ag-grid-enterprise/rich-select': 32.3.2
       '@ag-grid-enterprise/server-side-row-model': 32.3.2
       '@milaboratories/uikit': 2.0.13(typescript@5.5.4)
+      '@platforma-sdk/model': 1.8.0
+      canonicalize: 2.0.0
+      lru-cache: 11.0.2
+      vue: 3.5.12(typescript@5.5.4)
+    transitivePeerDependencies:
+      - typescript
+
+  '@platforma-sdk/ui-vue@1.8.7(typescript@5.5.4)':
+    dependencies:
+      '@ag-grid-community/client-side-row-model': 32.3.2
+      '@ag-grid-community/core': 32.3.2
+      '@ag-grid-community/csv-export': 32.3.2
+      '@ag-grid-community/infinite-row-model': 32.3.2
+      '@ag-grid-community/styles': 32.3.2
+      '@ag-grid-community/theming': 32.3.2
+      '@ag-grid-community/vue3': 32.3.2(typescript@5.5.4)
+      '@ag-grid-enterprise/clipboard': 32.3.2
+      '@ag-grid-enterprise/core': 32.3.2
+      '@ag-grid-enterprise/excel-export': 32.3.2
+      '@ag-grid-enterprise/menu': 32.3.2
+      '@ag-grid-enterprise/range-selection': 32.3.2
+      '@ag-grid-enterprise/rich-select': 32.3.2
+      '@ag-grid-enterprise/server-side-row-model': 32.3.2
+      '@milaboratories/uikit': 2.1.1(typescript@5.5.4)
       '@platforma-sdk/model': 1.8.0
       canonicalize: 2.0.0
       lru-cache: 11.0.2
