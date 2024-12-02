@@ -140,28 +140,6 @@ watch(() => [app.model.ui.weight, hasCellTags, hasUmiTags], (_) => {
         app.model.args.weight = weight;
     }
 }, { deep: true, immediate: true });
-
-const geneTypes = [
-    {
-        label: "V usage",
-        value: "v"
-    },
-    {
-        label: "J usage",
-        value: "j"
-    }
-]
-
-const geneNameFormats = [
-    {
-        label: "Gene",
-        value: "gene"
-    },
-    {
-        label: "Family",
-        value: "family"
-    }
-]
 </script>
 
 <template>
