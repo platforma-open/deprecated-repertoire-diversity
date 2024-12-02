@@ -1,12 +1,14 @@
-import { GraphMakerSettings } from '@milaboratories/graph-maker';
+import { GraphMakerState } from '@milaboratories/graph-maker';
 import {
   BlockModel,
   createPlDataTable,
+  createPlDataTableSheet,
+  getUniquePartitionKeys,
   InferOutputsType,
   isPColumn,
   isPColumnSpec,
   PlDataTableState,
-  Ref,
+  PlRef,
   ValueType
 } from '@platforma-sdk/model';
 
@@ -25,14 +27,15 @@ type DownsamplingForm = {
  * UI state
  */
 export type UiState = {
+  blockTitle: string;
   tableState?: PlDataTableState;
-  graphState: GraphMakerSettings;
+  graphState: GraphMakerState;
   weight: WeightFunction;
   downsampling: DownsamplingForm;
 };
 
 export type BlockArgs = {
-  clnsRef?: Ref;
+  clnsRef?: PlRef;
   /* downsampling options */
   onlyProductive: boolean;
   dropOutliers: boolean;
@@ -40,10 +43,34 @@ export type BlockArgs = {
   weight?: WeightFunction;
 };
 
-export const model = BlockModel.create<BlockArgs, UiState>()
-  .initialArgs({
+export const model = BlockModel.create()
+  .withArgs<BlockArgs>({
     onlyProductive: true,
     dropOutliers: false
+  })
+
+  .withUiState<UiState>({
+    blockTitle: 'Repertoire Diversity',
+    weight: 'auto',
+    downsampling: {
+      type: 'auto',
+      tag: 'read',
+      countNorm: 'auto',
+      countNormValue: 1000,
+      topValue: 1000,
+      cumtopValue: 80
+    },
+    tableState: {
+      gridState: {},
+      pTableParams: {
+        sorting: [],
+        filters: []
+      }
+    },
+    graphState: {
+      title: 'Diversity Analysis',
+      template: 'bar'
+    }
   })
 
   .argsValid((ctx) => ctx.args.downsampling !== undefined && ctx.args.weight !== undefined)
@@ -63,7 +90,16 @@ export const model = BlockModel.create<BlockArgs, UiState>()
       return undefined;
     }
 
-    return createPlDataTable(ctx, pCols, ctx.uiState?.tableState);
+    const anchor = pCols[0];
+    if (!anchor) return undefined;
+
+    const r = getUniquePartitionKeys(anchor.data);
+    if (!r) return undefined;
+
+    return {
+      table: createPlDataTable(ctx, pCols, ctx.uiState?.tableState),
+      sheets: r.map((values, i) => createPlDataTableSheet(ctx, anchor.spec.axesSpec[i], values))
+    };
   })
 
   .output('pf', (ctx) => {
@@ -83,9 +119,13 @@ export const model = BlockModel.create<BlockArgs, UiState>()
     return ctx.createPFrame([...pCols, ...upstream]);
   })
 
+  .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
+
+  .title((ctx) => ctx.uiState?.blockTitle ?? 'Repertoire Diversity')
+
   .sections([
-    { type: 'link', href: '/', label: 'Tabular results' },
-    { type: 'link', href: '/graph', label: 'Diversity plot' }
+    { type: 'link', href: '/', label: 'Tabular Results' },
+    { type: 'link', href: '/graph', label: 'Diversity Plots' }
   ])
 
   .done();

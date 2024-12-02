@@ -1,40 +1,54 @@
 <script setup lang="ts">
-import { GraphMaker, GraphMakerSettings } from "@milaboratories/graph-maker";
+import { GraphMaker, GraphMakerProps } from "@milaboratories/graph-maker";
 import '@milaboratories/graph-maker/styles';
 import { useApp } from "../app";
 
 const app = useApp();
 
-// @TODO move to defaultUi when implemented in the model
-if (app.ui.graphState === undefined) {
-    app.model.ui.graphState = {
-        title: "Diversity Analysis",
-        chartType: "discrete",
-        template: "box",
-        defaultOptions: [
-            {
-                inputName: "y",
-                selectedSource: {
-                    kind: "PColumn",
-                    valueType: "Float",
-                    name: "pl7.app/vdj/diversity",
-                    axesSpec: [
-                        {
-                            type: "String",
-                            name: "pl7.app/sampleId"
-                        },
-                        {
-                            type: "String",
-                            name: "pl7.app/vdj/diversityMeasure"
-                        }
-                    ]
+const defaultOptions: GraphMakerProps['defaultOptions'] = [
+    {
+        inputName: 'y',
+        selectedSource: {
+            kind: 'PColumn',
+            valueType: 'Float',
+            name: 'pl7.app/vdj/diversity',
+            axesSpec: [
+                {
+                    type: 'String',
+                    name: 'pl7.app/sampleId'
+                },
+                {
+                    type: 'String',
+                    name: 'pl7.app/vdj/diversityMeasure'
                 }
-            }
-        ]
-    } satisfies GraphMakerSettings
-};
+            ]
+        }
+    },
+    {
+        inputName: 'facetBy',
+        selectedSource: {
+            type: "String",
+            name: "pl7.app/vdj/chain"
+        }
+    },
+    {
+        inputName: 'tabBy',
+        selectedSource: {
+            type: "String",
+            name: "pl7.app/vdj/diversityMeasure"
+        }
+    },
+    {
+        inputName: 'primaryGrouping',
+        selectedSource: {
+            type: "String",
+            name: "pl7.app/sampleId"
+        }
+    }
+]
 </script>
 
 <template>
-    <GraphMaker :p-frame="app.model.outputs.pf" v-model="app.model.ui.graphState" />
+    <GraphMaker chart-type="discrete" :p-frame="app.model.outputs.pf" v-model="app.model.ui.graphState"
+        :default-options="defaultOptions" />
 </template>
