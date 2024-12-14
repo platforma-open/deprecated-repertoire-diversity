@@ -1,5 +1,17 @@
 ## 1.0.0
 
+## 2.3.0
+
+### Minor Changes
+
+- a095311: Major SDK update
+
+### Patch Changes
+
+- Updated dependencies [a095311]
+  - @platforma-open/milaboratories.repertoire-diversity.model@1.3.0
+  - @platforma-open/milaboratories.repertoire-diversity.ui@1.3.0
+
 ## 2.2.0
 
 ### Minor Changes
