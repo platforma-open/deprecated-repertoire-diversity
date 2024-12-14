@@ -29,12 +29,16 @@
       "url": "https://github.com/platforma-open/repertoire-diversity",
       "docs": "https://github.com/platforma-open/repertoire-diversity",
       "support": "mailto:support@milaboratories.com",
-      "description": "Analysis of VDJ repertoire diversity.",
+      "description": "Calculate major immune repertoire diversity indices.",
       "longDescription": "file:../docs/description.md",
       "changelog": "file:../CHANGELOG.md",
       "tags": [
         "vdj",
-        "downstream"
+        "downstream",
+	"immunology",
+        "diversity",
+        "TCR",
+        "BCR"
       ],
       "organization": {
         "name": "MiLaboratories Inc",
