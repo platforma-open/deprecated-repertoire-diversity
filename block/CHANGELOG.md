@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.3.0
+
+### Minor Changes
+
+- 9c28b6c: chore: bump version
+
 ## 2.2.1
 
 ### Patch Changes
