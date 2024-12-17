@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { PTableColumnSpec } from '@platforma-sdk/model';
 import { PlAgDataTable, PlAgDataTableToolsPanel, PlBlockPage, PlBtnGhost, PlDataTableSettings, PlEditableTitle, PlMaskIcon24 } from '@platforma-sdk/ui-vue';
 import { computed, ref } from 'vue';
 import { useApp } from '../app';
@@ -15,7 +14,6 @@ const tableSettings = computed<PlDataTableSettings>(() => ({
 
 const settingsAreShown = ref(app.model.outputs.pt === undefined)
 const showSettings = () => { settingsAreShown.value = true }
-const columns = ref<PTableColumnSpec[]>([]);
 </script>
 
 <template>
@@ -32,8 +30,7 @@ const columns = ref<PTableColumnSpec[]>([]);
         </template>
       </PlBtnGhost>
     </template>
-    <PlAgDataTable v-if="app.model.ui" :settings="tableSettings" v-model="app.model.ui.tableState" show-columns-panel
-      show-export-button ref="tableInstance" @columns-changed="(newColumns) => (columns = newColumns)" />
+    <PlAgDataTable :settings="tableSettings" v-model="app.model.ui.tableState" show-columns-panel show-export-button />
   </PlBlockPage>
 
   <SettingsModal v-model="settingsAreShown" />
