@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.3.2
+
+### Patch Changes
+
+- 74f6d66: chore: fix changelog
+
 ## 2.3.1
 
 ### Patch Changes
