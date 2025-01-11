@@ -31,7 +31,7 @@
       "support": "mailto:support@milaboratories.com",
       "description": "Calculate major immune repertoire diversity indices.",
       "longDescription": "file:../docs/description.md",
-      "changelog": "file:../CHANGELOG.md",
+      "changelog": "file:./CHANGELOG.md",
       "tags": [
         "vdj",
         "downstream",
