@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.ui
 
+## 1.4.0
+
+### Minor Changes
+
+- 99390b3: Hid Weight function and Downsampling in Settings window
+
 ## 1.3.1
 
 ### Patch Changes
