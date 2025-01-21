@@ -41,12 +41,14 @@ export type BlockArgs = {
   dropOutliers: boolean;
   downsampling?: string;
   weight?: WeightFunction;
+  isReady?: boolean;
 };
 
 export const model = BlockModel.create()
   .withArgs<BlockArgs>({
     onlyProductive: true,
-    dropOutliers: false
+    dropOutliers: false,
+    isReady: false
   })
 
   .withUiState<UiState>({
@@ -73,7 +75,12 @@ export const model = BlockModel.create()
     }
   })
 
-  .argsValid((ctx) => ctx.args.downsampling !== undefined && ctx.args.weight !== undefined)
+  // Activate "Run" button only after these conditions get fulfilled
+  .argsValid((ctx) =>  ctx.args.clnsRef !== undefined &&
+                      // isReady is set to false while we compute dataset specific settings
+                      ctx.args.isReady === true && 
+                      ctx.args.downsampling !== undefined && 
+                      ctx.args.weight !== undefined)
 
   .output('clnsOptions', (ctx) =>
     ctx.resultPool.getOptions((spec) => isPColumnSpec(spec) && spec.name === 'mixcr.com/clns')
