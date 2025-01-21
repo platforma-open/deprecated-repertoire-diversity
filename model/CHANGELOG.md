@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.model
 
+## 1.4.0
+
+### Minor Changes
+
+- 3435dba: Lock Run button until default settings are loaded
+
 ## 1.3.0
 
 ### Minor Changes
