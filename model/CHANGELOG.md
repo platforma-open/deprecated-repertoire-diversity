@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.model
 
+## 1.4.1
+
+### Patch Changes
+
+- d177ef3: default axis caption angle
+
 ## 1.4.0
 
 ### Minor Changes
