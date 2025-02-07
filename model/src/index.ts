@@ -71,7 +71,10 @@ export const model = BlockModel.create()
     },
     graphState: {
       title: 'Diversity Analysis',
-      template: 'bar'
+      template: 'bar',
+      axesSettings: {
+        axisX: {labelsRotation: '90deg'}
+      }
     }
   })
 
