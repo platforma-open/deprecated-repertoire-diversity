@@ -8,7 +8,10 @@
     "mark-stable": "turbo run mark-stable",
     "watch": "turbo watch build",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "reset:node_modules": "find . -type d -name 'node_modules' | grep -v '\\.pnpm' | xargs rm -r",
+    "reset:turbo-cache": "find . -type d -name '.turbo' | grep -v '\\.pnpm' | xargs rm -r",
+    "reset": "pnpm run reset:node_modules && pnpm run reset:turbo-cache"
   },
   "devDependencies": {
     "turbo": "catalog:",
