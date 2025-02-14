@@ -124,7 +124,8 @@ export const model = BlockModel.create()
       .getData()
       .entries.map((v) => v.obj)
       .filter(isPColumn)
-      .filter((column) => valueTypes.find((valueType) => valueType === column.spec.valueType));
+      .filter((column) => valueTypes.find((valueType) => valueType === column.spec.valueType))
+      .filter((column) => column.spec.name !== "Sample");
 
     return ctx.createPFrame([...pCols, ...upstream]);
   })
