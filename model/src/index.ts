@@ -117,7 +117,7 @@ export const model = BlockModel.create()
     if (pCols === undefined) {
       return undefined;
     }
-    const colsToUse = pCols.map(col => col.spec.name)
+    const colsToUse = pCols.map(col => col.spec.axesSpec[0].name)
 
     // enriching with upstream data
     const valueTypes = ['Int', 'Long', 'Float', 'Double', 'String', 'Bytes'] as ValueType[];
