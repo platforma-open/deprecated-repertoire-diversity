@@ -117,6 +117,7 @@ export const model = BlockModel.create()
     if (pCols === undefined) {
       return undefined;
     }
+    const colsToUse = pCols.map(col => col.spec.name)
 
     // enriching with upstream data
     const valueTypes = ['Int', 'Long', 'Float', 'Double', 'String', 'Bytes'] as ValueType[];
@@ -125,8 +126,7 @@ export const model = BlockModel.create()
       .entries.map((v) => v.obj)
       .filter(isPColumn)
       .filter((column) => valueTypes.find((valueType) => valueType === column.spec.valueType))
-      .filter((column) => column.spec.name !== "Sample");
-
+      .filter((column) => !colsToUse.includes((column.spec.annotations ?? {})["pl7.app/label"]))
     return ctx.createPFrame([...pCols, ...upstream]);
   })
 
