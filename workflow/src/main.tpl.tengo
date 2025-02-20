@@ -5,6 +5,7 @@ exec := import("@platforma-sdk/workflow-tengo:exec")
 assets := import("@platforma-sdk/workflow-tengo:assets")
 render := import("@platforma-sdk/workflow-tengo:render")
 pframes := import("@platforma-sdk/workflow-tengo:pframes")
+pSpec := import("@platforma-sdk/workflow-tengo:pframes.spec")
 json := import("json")
 
 mixcrTpl := assets.importTemplate(":mixcr")
@@ -17,11 +18,20 @@ wf.prepare(func(args){
 })
 
 wf.body(func(args) {
+	
+	dropOutliers := args.dropOutliers
+	inputSpec := args.clns.spec
+	title := args.title
+	blockId := wf.blockId().getDataAsJson()
+
 	mixcr := render.create(mixcrTpl, args)
 
 	importTsv := render.create(importTsvTpl, {
 		tsv: mixcr.output("tsv"),
-		sampleIdAxisSpec: args.clns.spec.axesSpec[0]
+		inputSpec: inputSpec,
+		title: title,
+		blockId: blockId,
+		dropOutliers: dropOutliers
 	})
 
 	pf := importTsv.output("pf")

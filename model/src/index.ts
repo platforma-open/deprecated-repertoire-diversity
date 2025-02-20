@@ -1,6 +1,7 @@
 import { GraphMakerState } from '@milaboratories/graph-maker';
 import {
   BlockModel,
+  createPFrameForGraphs,
   createPlDataTable,
   createPlDataTableSheet,
   getUniquePartitionKeys,
@@ -42,6 +43,7 @@ export type BlockArgs = {
   downsampling?: string;
   weight?: WeightFunction;
   isReady?: boolean;
+  title?: string;
 };
 
 export const model = BlockModel.create()
@@ -118,20 +120,30 @@ export const model = BlockModel.create()
       return undefined;
     }
 
-    // enriching with upstream data
-    const valueTypes = ['Int', 'Long', 'Float', 'Double', 'String', 'Bytes'] as ValueType[];
-    const upstream = ctx.resultPool
+    const valueTypes = [
+      "Int",
+      "Long",
+      "Float",
+      "Double",
+      "String",
+      "Bytes",
+    ] as ValueType[];
+    const upstream = ctx.resultPool 
       .getData()
       .entries.map((v) => v.obj)
       .filter(isPColumn)
-      .filter((column) => valueTypes.find((valueType) => valueType === column.spec.valueType))
-      
-    return ctx.createPFrame([...pCols, ...upstream]);
+      .filter((column) => 
+        valueTypes.find((valueType) => (valueType === column.spec.valueType) && (
+                                          column.id.includes("metadata"))
+                                        )
+      );
+
+    return createPFrameForGraphs(ctx, [...pCols, ...upstream]);
   })
 
   .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
 
-  .title((ctx) => ctx.uiState?.blockTitle ?? 'Repertoire Diversity')
+  .title((ctx) => (ctx.args.title ? `Repertoire Diversity - ${ctx.args.title}` : 'Repertoire Diversity'))
 
   .sections([
     { type: 'link', href: '/', label: 'Tabular Results' },

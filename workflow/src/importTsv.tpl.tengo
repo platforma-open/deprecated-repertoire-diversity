@@ -6,57 +6,21 @@ assets := import("@platforma-sdk/workflow-tengo:assets")
 pframes := import("@platforma-sdk/workflow-tengo:pframes")
 pColumn := import("@platforma-sdk/workflow-tengo:pframes.pcolumn")
 xsv := import("@platforma-sdk/workflow-tengo:pframes.xsv")
+pSpec := import("@platforma-sdk/workflow-tengo:pframes.spec")
 json := import("json")
 
 self.defineOutputs("pf")
 
 filterTables := import(":filterTables")
 
-tsvImportParams := {
-	"axes": [
-		{
-			column: "sample",
-			preProcess: [{
-				type: "regexpReplace",
-				pattern: "^(.*)\\.clns$",
-				replacement: "$1"
-			}]
-			/* spec: sampleId spec must be set outside */
-		},
-		{
-			column: "metric",
-			spec: {
-				name: "pl7.app/vdj/diversityMeasure",
-				type: "String",
-				annotations: {
-					"pl7.app/axisNature": "heterogeneous",
-					"pl7.app/label": "Diversity measure"
-				}
-			}
-		}
-		],
-	columns: [
-		{
-			column: "value",
-			id: "value",
-			allowNA: true,
-			spec: {
-				name: "pl7.app/vdj/diversity",
-				valueType: "Float",
-				annotations: {
-					"pl7.app/label": "Repertoire Diversity"
-				}
-			}
-		}
-		],
-	storageFormat: "Binary",
-	partitionKeyLength: 0
-}
-
 FILE_NAME_PREFIX_LEN := len("r.diversity.")
 FILE_NAME_SUFFIX_LEN := len(".tsv")
 
 self.body(func(args) {
+
+	inputSpec := args.inputSpec
+	blockId := args.blockId
+	dropOutliers := args.dropOutliers
 
 	tsvMap := pColumn.resourceMapBuilder(/* key length*/ 1 )
 	for fileName, file in args.tsv {
@@ -65,10 +29,66 @@ self.body(func(args) {
 		tsvMap.add([chain], filteredFile)
 	}
 	tsvMap = tsvMap.build()
+	
+	filteringStr := ""
+	if dropOutliers {
+		filteringStr += "Outliers dropped"
+	}
+
+	if filteringStr == "" {
+		filteringStr = "No filtering"
+	}
+
+	trace := pSpec.makeTrace(inputSpec,
+		{type: "milaboratories.repertoire-diversity.filtering", id: blockId + ".filtering", importance: 30, label: filteringStr},
+		{type: "milaboratories.repertoire-diversity", id: blockId, importance: 25, label: "Repertoire Diversity"}
+	)
+
+	tsvImportParams := {
+		"axes": [
+			{
+				column: "sample",
+				preProcess: [{
+					type: "regexpReplace",
+					pattern: "^(.*)\\.clns$",
+					replacement: "$1"
+				}]
+				/* spec: sampleId spec must be set outside */
+			},
+			{
+				column: "metric",
+				spec: {
+					name: "pl7.app/vdj/diversityMeasure",
+					type: "String",
+					annotations: {
+						"pl7.app/axisNature": "heterogeneous",
+						"pl7.app/label": "Diversity measure"
+					}
+				}
+			}
+			],
+		columns: [
+			{
+				column: "value",
+				id: "value",
+				allowNA: true,
+				spec: {
+					name: "pl7.app/vdj/diversity",
+					valueType: "Float",
+					annotations: {
+						"pl7.app/trace": trace.valueStr,
+						"pl7.app/label": "Repertoire Diversity"
+					}
+				}
+			}
+			],
+		storageFormat: "Binary",
+		partitionKeyLength: 0
+	}
 
 	spec := tsvImportParams
-	spec.axes[0].spec = args.sampleIdAxisSpec
-
+	spec.axes[0].spec = inputSpec.axesSpec[0]
+	
 	pf := xsv.importFileMap(tsvMap, "tsv", spec, {
 		additionalAxesSpec: [
 			{

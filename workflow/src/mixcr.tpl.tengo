@@ -26,11 +26,11 @@ self.body(func(args) {
 		arg("--default-weight-function").arg(args.weight).
 		secret("MI_LICENSE", "MI_LICENSE")
 	
-	if args.dropOutliers == true {
+	if args.dropOutliers {
 		cmdBuilder = cmdBuilder.arg("--drop-outliers")
 	}
 
-	if args.onlyProductive == true {
+	if args.onlyProductive {
 		cmdBuilder = cmdBuilder.arg("--only-productive")
 	}
 
