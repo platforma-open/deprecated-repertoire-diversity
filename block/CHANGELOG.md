@@ -1,5 +1,14 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.3.8
+
+### Patch Changes
+
+- Updated dependencies [0ed8526]
+  - @platforma-open/milaboratories.repertoire-diversity.workflow@1.3.0
+  - @platforma-open/milaboratories.repertoire-diversity.model@1.5.0
+  - @platforma-open/milaboratories.repertoire-diversity.ui@1.5.4
+
 ## 2.3.7
 
 ### Patch Changes
