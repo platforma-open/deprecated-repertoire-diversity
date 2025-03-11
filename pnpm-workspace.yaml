@@ -12,7 +12,7 @@ catalog:
   '@platforma-sdk/block-tools': ^2.5.13
 
   '@milaboratories/graph-maker': ^1.1.45
-  '@milaboratories/software-pframes-conv': ^2.1.12
+  '@milaboratories/software-pframes-conv': ^2.1.16
   '@platforma-open/milaboratories.software-small-binaries': ^1.15.7
   '@platforma-open/milaboratories.software-mixcr': 4.7.0-139-develop
   '@platforma-open/milaboratories.software-ptransform': ^1.2.0
@@ -24,7 +24,7 @@ catalog:
 
   'typescript': ~5.7.3
   'tsup': ~8.3.6
-  'turbo': ^2.4.2
+  'turbo': ^2.4.4
 
   'vite': ^6.1.0
   'vitest': ^3.0.5
