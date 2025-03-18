@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.3.9
+
+### Patch Changes
+
+- d18f601: Updated tags and ranking
+
 ## 2.3.8
 
 ### Patch Changes
