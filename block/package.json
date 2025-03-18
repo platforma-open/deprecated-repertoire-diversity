@@ -33,19 +33,16 @@
       "longDescription": "file:../docs/description.md",
       "changelog": "file:./CHANGELOG.md",
       "tags": [
-        "vdj",
+        "airr",
         "downstream",
-        "immunology",
-        "diversity",
-        "TCR",
-        "BCR"
+        "repertoire"
       ],
       "organization": {
         "name": "MiLaboratories Inc",
         "url": "https://milaboratories.com/",
         "logo": "file:../logos/organization-logo.png"
       },
-      "marketplaceRanking": 10000
+      "marketplaceRanking": 16600
     }
   },
   "devDependencies": {
