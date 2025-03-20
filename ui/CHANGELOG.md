@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.ui
 
+## 1.5.5
+
+### Patch Changes
+
+- 830ed4a: typescript version to 5.5.4
+
 ## 1.5.4
 
 ### Patch Changes
