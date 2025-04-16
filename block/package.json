@@ -24,7 +24,7 @@
       "ui": "@platforma-open/milaboratories.repertoire-diversity.ui/dist"
     },
     "meta": {
-      "title": "Repertoire Diversity Analysis",
+      "title": "Repertoire Diversity Analysis (Deprecated)",
       "logo": "file:../logos/block-logo.png",
       "url": "https://github.com/platforma-open/repertoire-diversity",
       "docs": "https://github.com/platforma-open/repertoire-diversity",
@@ -42,7 +42,7 @@
         "url": "https://milaboratories.com/",
         "logo": "file:../logos/organization-logo.png"
       },
-      "marketplaceRanking": 16600
+      "marketplaceRanking": 1010
     }
   },
   "devDependencies": {
