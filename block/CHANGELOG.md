@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.1
+
+### Patch Changes
+
+- da2c51d: Block deprecated
+
 ## 2.4.0
 
 ### Minor Changes
