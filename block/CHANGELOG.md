@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.2
+
+### Patch Changes
+
+- 477b666: Add deprecated label to block
+
 ## 2.4.1
 
 ### Patch Changes
