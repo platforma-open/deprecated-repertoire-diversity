@@ -42,7 +42,8 @@
         "url": "https://milaboratories.com/",
         "logo": "file:../logos/organization-logo.png"
       },
-      "marketplaceRanking": 1010
+      "marketplaceRanking": 1010,
+      "deprecated": true
     }
   },
   "devDependencies": {
