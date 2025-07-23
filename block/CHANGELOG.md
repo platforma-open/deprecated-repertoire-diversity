@@ -1,5 +1,15 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.4
+
+### Patch Changes
+
+- a503f38: Deprecated block removed from Add Block.
+- Updated dependencies [a503f38]
+  - @platforma-open/milaboratories.repertoire-diversity.model@1.5.1
+  - @platforma-open/milaboratories.repertoire-diversity.ui@1.5.6
+  - @platforma-open/milaboratories.repertoire-diversity.workflow@1.3.1
+
 ## 2.4.3
 
 ### Patch Changes

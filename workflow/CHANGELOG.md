@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.workflow
 
+## 1.3.1
+
+### Patch Changes
+
+- a503f38: Deprecated block removed from Add Block.
+
 ## 1.3.0
 
 ### Minor Changes
