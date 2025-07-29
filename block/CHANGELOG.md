@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.5
+
+### Patch Changes
+
+- a653209: Make deprecated
+
 ## 2.4.4
 
 ### Patch Changes
