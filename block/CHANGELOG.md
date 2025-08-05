@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.6
+
+### Patch Changes
+
+- 247bc14: te
+
 ## 2.4.5
 
 ### Patch Changes
