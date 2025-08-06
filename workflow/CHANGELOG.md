@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.workflow
 
+## 1.3.2
+
+### Patch Changes
+
+- 4574321: Remove from add block view.
+
 ## 1.3.1
 
 ### Patch Changes

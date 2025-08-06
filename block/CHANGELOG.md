@@ -1,5 +1,15 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.7
+
+### Patch Changes
+
+- 4574321: Remove from add block view.
+- Updated dependencies [4574321]
+  - @platforma-open/milaboratories.repertoire-diversity.model@1.5.2
+  - @platforma-open/milaboratories.repertoire-diversity.ui@1.5.7
+  - @platforma-open/milaboratories.repertoire-diversity.workflow@1.3.2
+
 ## 2.4.6
 
 ### Patch Changes
