@@ -1,5 +1,15 @@
 # @platforma-open/milaboratories.repertoire-diversity
 
+## 2.4.8
+
+### Patch Changes
+
+- 80f244d: Removed from Add Block
+- Updated dependencies [80f244d]
+  - @platforma-open/milaboratories.repertoire-diversity.model@1.5.3
+  - @platforma-open/milaboratories.repertoire-diversity.ui@1.5.8
+  - @platforma-open/milaboratories.repertoire-diversity.workflow@1.3.3
+
 ## 2.4.7
 
 ### Patch Changes

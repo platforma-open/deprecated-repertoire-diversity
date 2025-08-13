@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.repertoire-diversity.workflow
 
+## 1.3.3
+
+### Patch Changes
+
+- 80f244d: Removed from Add Block
+
 ## 1.3.2
 
 ### Patch Changes
